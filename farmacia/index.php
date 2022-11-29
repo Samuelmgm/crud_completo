@@ -4,7 +4,7 @@
        
         $funcao = array("Estagiário","Vendedor","Entregador","Farmacêutico");
         $status = array("Nao"=>"Desativado","Sim"=>"Ativado");
-        $nav = array("home" => "Home","funcionarios" => "Funcionários","produtos" => "Produtos","clientes" => "Clientes","fornecedores" => "Fornecedores","vendas" => "Vendas");  
+        $nav = array("home" => "Home","funcionarios" => "Funcionários","produtos" => "Produtos","clientes" => "Clientes","fornecedores" => "Fornecedores","vendas" => "Vendas","perdemo"=>"Perdemo");  
         $produtos = array("med"=>"Medicamentos","cos"=>"Cosméticos","limpeza"=>"Saneantes","comida"=>"Alimentos","coisas de saude"=>"Produtos para Saúde","pet" =>"Pet");
         
         $nome_func = "";
@@ -73,7 +73,7 @@
             <ul class="nav-bar">
                 <?php
                     foreach($nav as $key => $value){?>
-                        <li><a for="<?=$key?>"><?=$nav[$key]?></a></li>
+                        <li><a class="nav" for="<?=$key?>"><?=$nav[$key]?></a></li>
                 <?php } ?>          
             </ul>
         </header>
@@ -97,16 +97,17 @@
                 <input type="text" id="email" name="email" value="<?= $email_func ?>">
                 <label for="funcao">Função</label>
                 <select name="funcao" id="funcao">
+                    <option>Selecione...</option>
                     <?php
                         foreach($funcao as $f){?>
-                            <option value="<?= $f?>"><?=$f?></option>
+                            <option value="<?= $f?>" <?= $f == $enviofuncao?"selected":"" ?>><?=$f?></option>
                     <?php } ?>                
                 </select>
                 <?php
                     if($id!=""){?>
                         <input type="hidden" value="<?= $id;?>" name="id">
                 <?php } ?>
-                <button type="submit" class="btn">Registrar</button>          
+                <button type="submit" class="btn" id="btn_func" onclick="manter('funcionario')">Registrar</button>          
             </form>          
             <div>
                 <?php
@@ -128,16 +129,20 @@
                 <input type="number" name="quant_prod" id="quant_prod" value="<?= $quantidade_prod?>">
                 <label for="tipo_prod">Tipo do Produto</label>
                 <select name="tipo" id="tipo_prod">
+                    <option>Selecione...</option>
                     <?php
-                        foreach($produtos as $key => $value){?>
-                            <option value="<?= $key ?>"><?= $value?></option>
+                    print_r($tipo_prod);
+                    ?>
+                    <?php
+                        foreach($produtos as $p){?>
+                            <option value="<?= $p ?>" <?= $p == $tipo_prod?"selected":"" ?>><?=$p?></option>
                     <?php } ?>               
                 </select>
                 <?php
                     if($id!=""){?>
                         <input type="hidden" value="<?= $id;?>" name="id">
                 <?php } ?>
-                    <button type="submit" class="btn">Registrar</button>
+                    <button type="submit" class="btn" for="produtos">Registrar</button>
             </form>
             <div>
                 <?php
@@ -177,7 +182,7 @@
                     <?php 
                         foreach($status as $key => $value){ ?>
                             <label for="<?= $key?>"><?= $value ?></label>
-                            <input type="radio" value="<?= $key ?>" name="status" id="<?=$key?>">       
+                            <input type="radio" value="<?= $key ?>" name="status" id="<?=$key?>" <?= $key == $situacao?"checked":"" ?>>       
                     <?php } ?>
                 <?php
                     if($id!=""){?>
@@ -202,9 +207,10 @@
                 <input type="number" name="v_quant_prod" id="v_quant_prod" value="<?= $quant_venda?>">
                 <label for="v_tipo_prod">Tipo do Produto</label>
                 <select name="v_tipo" id="v_tipo_prod">
+                    <option>Selecione....</option>
                     <?php
-                        foreach($produtos as $key => $value){?>
-                            <option value="<?= $key ?>"><?= $value?></option>
+                        foreach($produtos as $f){?>
+                            <option value="<?= $f ?>" <?= $f == $tipo_venda?"selected":"" ?>><?=$f?></option>
                     <?php } ?>               
                 </select>
                 <?php
@@ -219,9 +225,14 @@
                 ?>
             </div>  
         </fieldset>
-        <div>
+        <div id="perdemo" class="content">
+            <img src="https://media.tenor.com/X8HRdbC6IG0AAAAd/perdemo-maradona.gif">
+            <img src="https://media.tenor.com/UuiSVUpyS5IAAAAd/messi-perdemo.gif" >
+            <img src="https://media.tenor.com/0JFlaUgImuEAAAAM/demanda-urgente-meme-design.gif">
+        </div>
+        <footer>
             <button id="btron" class="colorido">Modo Rave</button>
             <button id="btroff" class="colorido">Modo Rave</button>
-        </div>
+        </footer>
     </body>
 </html>

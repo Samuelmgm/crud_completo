@@ -1,4 +1,3 @@
-   
     $(document).ready(function(){
         $("#btron").click(function(){
             $("body").removeClass();              
@@ -12,11 +11,12 @@
     $(document).ready(function(){
         $(".content").hide();
         $("#home").show();
-        $("a").click(function(){
+        $("a.nav").click(function(){
             $(".content").hide();
             $("#"+$(this).attr("for")).show();                
-        });  
-    });   
+        });         
+    });
+ 
     $(document).ready(function(){
         $("#btroff").hide();
         $("#btron").click(function(){
@@ -27,4 +27,4 @@
             $("#btroff").hide();
             $("#btron").show();
         })
-    })
+    });

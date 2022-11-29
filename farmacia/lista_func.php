@@ -22,7 +22,7 @@
                     while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                         ?>
                             <tr>
-                                <td><?= $line["nome"]?></td>                               
+                                <td><?= $line["nome"]?></td>                             
                                 <td><?= $line["cpf"]?></td>
                                 <td><?= $line["email"]?></td>
                                 <td><?= $line["funcao"]?></td>                                
